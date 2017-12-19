@@ -1,0 +1,423 @@
+body {
+    background-color: #fafafa;
+}
+.margin0{
+    margin:0px;
+}
+.insta_header {
+    background: #fff;
+    height: 70px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_logo {
+    height: 45px;
+    margin: 12px 22%;
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 428px;
+    cursor: pointer;
+    background-position: -199px 3px;
+}
+
+.search_insta {
+    height: 25px;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    background-color: #fafafa;
+    width: 59%;
+    outline: 0;
+    margin: 22px 0px;
+}
+
+.nav_menu_insta {
+    height: 35px;
+    margin: 17px 26%;
+}
+
+.nav_options {
+    height: 26px;
+    width: 26px;
+    margin: 5px 7px;
+}
+
+.navigation_icon {
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    background-position: -291px -360px;
+    cursor: pointer;
+}
+
+.heart_icon {
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    cursor: pointer;
+    background-position: -175px -360px;
+}
+
+.user_icon {
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    background-position: -88px -360px;
+    cursor: pointer;
+}
+
+.data_box {
+    position: relative;
+    width: 580px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    margin: 50px auto;
+}
+
+.data_box_header {
+    height: 72px;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 15px;
+}
+
+.user_img {
+    width: 40px;
+    border-radius: 50%;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+    background-image: url(../img/Hopetoun_falls.jpg);
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.data_box username {
+    margin: 10px;
+    display: inline-block;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.data_box time {
+    margin: 10px;
+    display: inline-block;
+    float: right;
+    color: #999;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.data_box_center {
+    border-bottom: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+.data_box_comments {
+    padding: 15px;
+}
+
+.data_box_comments likes {
+    font-size: 17px;
+    display: block;
+    cursor: pointer;
+}
+
+.data_box_comments users {
+    display: block;
+}
+
+.data_box_comments user_name {
+    color: #262626;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.data_box .add_new_comment {
+    margin: 0px 15px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.like_image_btn {
+    width: 30px;
+    height: 27px;
+    display: inline-block;
+    float: left;
+    margin: 20px 0px;
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    background-position: -231px -360px;
+    cursor: pointer;
+}
+.redHeart{
+   width: 30px;
+    height: 27px;
+    display: inline-block;
+    float: left;
+    margin: 20px 0px;
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    background-position: -202px -360px;
+    cursor: pointer; 
+}
+.add_comments_text {
+    border: 0px;
+    margin: 20px 0px 20px 5px;
+    height: 25px;
+    outline: 0;
+    width: 85%;
+}
+
+.more_options {
+    float: right;
+    width: 30px;
+    height: 27px;
+    display: inline-block;
+    margin: 20px 0px;
+    background-image: url(../img/insta.png);
+    background-repeat: no-repeat;
+    background-size: 421px;
+    background-position: -355px -55px;
+    cursor: pointer;
+}
+.particularUser{
+    display: block;
+}
+.backDrop{
+    position: fixed;
+    background-color: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    opacity: 0.3;
+    display: none;
+}
+.popUp{
+        position: absolute;
+    width: 85%;
+    height: 90px;
+    z-index: 99999999;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    margin: auto;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+}
+.popUp .popUpOption:first-child{
+    border-bottom: 1px solid #dbdbdb;
+}
+.popUpOption{
+    text-align: center;
+        padding: 12px 0px;
+}
+.popUp .popUpOption:hover{
+    cursor: pointer;
+    background-color: #e1e1e1;
+}
+.popUp .popUpOptionCancel{
+     padding: 12px 0px;
+    text-align: center;
+    cursor: pointer;
+}
+.popUp .popUpOptionCancel:hover{
+    background-color: #e1e1e1;
+}
+.outer_box_acc{
+    position: absolute;
+    height: 435px;
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    width: 340px;
+    bottom: 0px;
+    right: 0px;
+}
+.outer_box{
+    position: absolute;
+    height: 437px;
+    margin: auto;
+    top: 0px;
+    left: 0px;
+    width: 300px;
+    bottom: 0px;
+    right: 0px;
+}
+.signin_box{
+    
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+}
+.signin_box h1{
+    text-align: center;
+}
+.outer_box_acc .email, .outer_box_acc .password{
+    width: 84%;
+} 
+.outer_box_acc .btn{
+    width:88% !important;
+}
+.email, .password{
+    width: 80%;
+    margin: 0px;
+}
+.signin_box .form-group{
+    display: inline-block;
+        padding: 10px 20px;
+    width: 100%;
+}
+.signin_box a{
+    padding-left: 20px;
+}
+.signin_box .btn{
+    width:84%;
+}
+.error{
+    text-align: center;
+}
+.signin_box{
+    display: inline-block;
+}
+.create_acc{
+        display: inline-block;
+    width: 93%;
+    border: 1px solid #08c;
+    margin: 15px 0px;
+    cursor:pointer;
+    padding: 10px;
+        text-align: center;
+}
+.new-add-button{
+            position: fixed;
+    background-color: #fff;
+    bottom: 24px;
+    z-index:99;
+    right: 24px;
+    color: #000;
+    border: 1px solid #e6e6e6;
+}
+.new-add-button:hover{
+            position: fixed !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+.new-add-button:active{
+            position: fixed !important;
+    background-color: #fff !important;
+   
+    color: #000 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+.new-add-button:focus{
+            position: fixed !important;
+    background-color: #fff !important;
+    
+    outline:0 !important;
+    
+    color: #000 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+
+@media screen and (max-width: 414px) {
+    .new-add-button{
+        position: fixed;
+        background-color: #fff;
+        bottom: 0px;
+        width: 100%;
+        z-index: 99;
+        border-radius: 0px;
+        right: 0px;
+        color: #000;
+        border: 1px solid #e6e6e6;
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    }
+    #posts{
+        padding-top: 40px;
+    }
+    .more_options{
+        display: none;
+        
+    }
+   .data_box {
+        position: relative;
+        width: 320px;
+        background-color: #fff;
+        border: 1px solid #e6e6e6;
+        margin: 50px auto;
+    }
+    .header_logo {
+        height: 45px;
+        margin: 12px 22%;
+        background-image: url(../img/insta.png);
+        background-repeat: no-repeat;
+        background-size: 428px;
+        cursor: pointer;
+        background-position: -199px 3px;
+    }
+    .search_insta{
+        display: none;
+    }
+    .nav_menu_insta{
+        display: none;
+    }
+    .insta_header{
+        position: fixed;
+            width: 100%;
+    top: 0px;
+    z-index:9;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
+    }
+}
+@media screen and (max-width: 375px) {
+    .header_logo {
+        height: 45px;
+        margin: 12px 18%;
+        background-image: url(../img/insta.png);
+        background-repeat: no-repeat;
+        background-size: 428px;
+        cursor: pointer;
+        background-position: -199px 3px;
+    }
+}
+@media screen and (max-width: 320px) {
+    .header_logo {
+        height: 45px;
+        margin: 12px 11%;
+        background-image: url(../img/insta.png);
+        background-repeat: no-repeat;
+        background-size: 428px;
+        cursor: pointer;
+        background-position: -199px 3px;
+    }
+    .outer_box_acc{
+        width: 305px;
+    }
+}
+.logo_img{
+           width: 100%;
+    display: block;
+    text-align: center;
+    margin: 10px auto;
+}
+#descriptionPhoto{
+    margin-top: 5px;
+    width: 100%;
+    height: 110px;
+}
+#app1 p{
+    text-align: center;
+}
+.data_box_center img{
+    display: block;
+    margin: 0 auto;
+}

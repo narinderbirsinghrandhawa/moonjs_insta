@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- our local copy of the jquery library. Normally, we'd use a CDN copy to use someone else's bandwidth -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/my_style.css" />
+    <style>
+      .thumb {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+      }
+    </style>
+
+</head>
+<!-- add the onload event handler to the body tag -->
+
+<body>
+    <div class="backDrop"></div>
+
+    <div class="container-fluid insta_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 text-center">
+                    <div class="header_logo"></div>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <input typ="text" class="search_insta text-center" placeholder="Search">
+                </div>
+                <div class="col-sm-4 text-center">
+                    <div class="nav_menu_insta">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="nav_options navigation_icon"></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="nav_options heart_icon"></div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="nav_options user_icon"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg new-add-button" data-toggle="modal" data-target="#myModal">Add a Picture</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" id="uploadPicture">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add a Picture</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="uploadForm" enctype="multipart/form-data" name="uploadForm" novalidate>
+                        <input type="file" id="files" name="files[]" multiple />
+                        <output id="list"></output>
+                        <script>
+                          function handleFileSelect(evt) {
+                            var files = evt.target.files; // FileList object
+                        
+                            // Loop through the FileList and render image files as thumbnails.
+                            for (var i = 0, f; f = files[i]; i++) {
+                        
+                              // Only process image files.
+                              if (!f.type.match('image.*')) {
+                                continue;
+                              }
+                        
+                              var reader = new FileReader();
+                        
+                              // Closure to capture the file information.
+                              reader.onload = (function(theFile) {
+                                return function(e) {
+                                  // Render thumbnail.
+                                  var span = document.createElement('span');
+                                  span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                                                    '" title="', escape(theFile.name), '"/>'].join('');
+                                  document.getElementById('list').insertBefore(span, null);
+                                };
+                              })(f);
+                        
+                              // Read in the image file as a data URL.
+                              reader.readAsDataURL(f);
+                            }
+                          }
+                        
+                          document.getElementById('files').addEventListener('change', handleFileSelect, false);
+                        </script>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="submitData()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- create a div with an id to give us an anchor point to let the javascript do its work -->
+    <!-- create a div with an id to give us an anchor point to let the javascript do its work -->
+    <div id="posts">
+        <div m-for="item in img" class='data_box'>
+            <div class='data_box_header'>
+                 <div class='user_img'></div>
+                 <username>nature_like</username>
+                 <time>4h</time>
+            </div>
+            <div class='data_box_center'>
+                <img src="{{item}}" class='img-responsive'>
+            </div>
+            <div  class='data_box_comments' id="likeNumbers">
+              
+            </div>
+            <div class='add_new_comment'>
+                 <likeBtn class='like_image_btn greyHeart' _id='" + unique_id + "' onclick='likeClick(\"" + post._id + "\",this);'></likeBtn>
+                   <input class='add_comments_text' type='text' placeholder='Add a Comment...' _id='" + unique_id + "' onkeyup='addComment(\"" + post._id + "\",this);'>
+                <div class='more_options'></div>
+            </div>
+                 
+        </div>
+        
+            
+    </div>
+    </div>
+    <script src="https://unpkg.com/moonjs"></script>
+  <script src="https://unpkg.com/moonjs/dist/moon.js"></script>
+  <script src="https://unpkg.com/moon-router"></script>
+  <script>
+
+  const posts = new Moon({
+    el: "#posts",
+     data: {
+        img: []
+      },
+  methods: {
+    changeMessage: function(msg) {
+        $.ajax( { url: "https://api.mlab.com/api/1/databases/moonjs_database/collections/posts?apiKey=cAcQAeQrda2NeCXvYdHPoENnfxokPari",
+    		  type: "GET",
+    		  contentType: "application/json",
+    		  success: function(data){
+    		       var newList = [];
+    		      for(var i = 0; i<= data.length-1;i++){
+    		          newList.push(data[i].urlLink);
+    		      }
+    		   
+    		    
+    		     posts.set('img', newList); 
+    		    
+          }} );
+      
+    },
+    submitData: function(){alert()
+        var imsgrLink = $("#list span img").attr("src");
+        console.log(imsgrLink);
+    }
+  }
+  });
+  posts.callMethod('changeMessage');
+  
+  function submitData(){
+      var imgUrl = $("#list span img").attr("src");
+       $.ajax( { url: "https://api.mlab.com/api/1/databases/moonjs_database/collections/posts?apiKey=cAcQAeQrda2NeCXvYdHPoENnfxokPari",
+		  data: JSON.stringify( { "urlLink":imgUrl,"likes" : 1, "comment" : "test" } ),
+		  type: "POST",
+		  contentType: "application/json",
+		  success: function(){
+    		   $(location).attr('href','https://moonjs-insta-narinderbirsinghrandhawa.c9users.io/templates/posts.html');
+          } } );
+  }
+  </script>
+ 
+</body>
+
+</html>

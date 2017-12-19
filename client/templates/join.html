@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- our local copy of the jquery library. Normally, we'd use a CDN copy to use someone else's bandwidth -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/my_style.css" />
+    </head>
+  <body>
+    <div class="outer_box" id="app1">
+        <div class="signin_box">
+            <h1>Create User</h1>
+            <div class="form-group">
+                <input type="text"  name="email" id="email" class="form-control email" placeholder="Email" required autofocus/>
+            </div>
+            <div class="form-group">
+                <input type="text"  name="username" id="username" class="form-control email" placeholder="Username" required/>
+            </div>
+
+            <div class="form-group">
+                <input type="password" name="password" id="password" class="form-control password" placeholder="Password" required/>
+            </div>
+            
+            <p>{{msg}}</p>
+        </div>
+        <a href="#" class="text-center create_acc" m-on:click="createAccount">Create Account</a>
+        </br>
+    </div>
+  
+  <script src="https://unpkg.com/moonjs"></script>
+  <script src="https://unpkg.com/moonjs/dist/moon.js"></script>
+  <script src="https://unpkg.com/moon-router"></script>
+   <script>
+
+  const app1 = new Moon({
+    el: "#app1",
+    data: {
+      msg: "Welcome"
+    },
+    methods: {
+      changeMessage: function(msg) {
+            this.set('msg', msg);
+          },
+      createAccount: function() {
+          var email= $("#email").val();
+        var userName = $("#username").val();
+        var password = $("#password").val();
+        if(email == "" || userName == "" || password == "" || email == null || userName == null || password == null || email == undefined || userName == undefined || password == undefined){
+          app1.callMethod('changeMessage', ['Email or Username or Password field is Blank!!']);
+          
+        }
+        else{
+          app1.callMethod('changeMessage', ['Creating.....']);
+          $.ajax( { url: "https://api.mlab.com/api/1/databases/moonjs_database/collections/user?apiKey=cAcQAeQrda2NeCXvYdHPoENnfxokPari",
+		  data: JSON.stringify( { "email":email,"username" : userName, "password" : password } ),
+		  type: "POST",
+		  contentType: "application/json",
+		  success: function(){
+    		   app1.callMethod('changeMessage', ['Created !!']);
+    		   $(location).attr('href','https://moonjs-insta-narinderbirsinghrandhawa.c9users.io/client/index.html');
+          }} );
+        }
+      }
+    }
+  });
+  
+  </script>
+
+</body>
+
+</html>
